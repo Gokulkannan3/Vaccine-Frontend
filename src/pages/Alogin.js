@@ -19,7 +19,7 @@ export default function Alogin() {
     e.preventDefault();
     console.log({ usermail, password });
     try {
-      const response = await axios.post('http://localhost:8080/alogin', {
+      const response = await axios.post('https://vaccine-server-tj0x.onrender.com/alogin', {
         usermail: usermail,
         password: password,
       });
@@ -28,8 +28,6 @@ export default function Alogin() {
       } else {
         setLoginStatus(true);
         const { token } = response.data;
-        
-        // Save token and usermail in localStorage
         localStorage.setItem('token', token);
         localStorage.setItem('usermail', usermail);
         

@@ -4,33 +4,32 @@ import axios from 'axios';
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
+useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
     if (storedUserData) {
-        setUserData(JSON.parse(storedUserData));
+      setUserData(JSON.parse(storedUserData));
     } else {
-        axios.get("http://localhost:8080/isAuth", {
-            headers: {
-                "x-access-token": localStorage.getItem("token"),
-            }
+      axios
+        .get('https://vaccine-server-tj0x.onrender.com/isAuth', {
+          headers: {
+            'x-access-token': localStorage.getItem('token'),
+          },
         })
         .then((response) => {
-            console.log(response.data);
-
-            if (response.data.result && response.data.result.length > 0) {
-                const userData = response.data.result[0];
-                setUserData(userData);
-                localStorage.setItem("userData", JSON.stringify(userData));
-            } else {
-                console.error('No user details found in the response');
-            }
+          if (response.data.result && response.data.result.length > 0) {
+            const userData = response.data.result[0];
+            setUserData(userData);
+            localStorage.setItem('userData', JSON.stringify(userData));
+          } else {
+            console.error('No user details found in the response');
+          }
         })
         .catch((error) => {
-            console.error('An unexpected error occurred:', error.message);
+          console.error('An unexpected error occurred:', error.message);
         });
     }
-}, []);
+  }, []);
+   
 
   return (
     <div className='out'>

@@ -68,9 +68,11 @@ export default function Hnav() {
         )}
         <Link to='/pro'>
             {userData && userData.firstname && (
-            <div className='btn border-0 bg-red-400 flex justify-center items-center text-2xl w-12 h-12 rounded-full font-semibold'>
-                <button>{userData.firstname[0]}</button>
-            </div>
+              <div className="avatar online placeholder -mt-2">
+                <div className="bg-red-400 text-neutral-content rounded-full w-16">
+                  <span className="text-4xl font-bold flex justify-center text-black">{userData.firstname[0]}</span>
+                </div>
+              </div> 
             )}
         </Link>
       </div>

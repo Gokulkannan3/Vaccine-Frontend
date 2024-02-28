@@ -17,7 +17,7 @@ export default function Dnav() {
         </div>
         <div className='flex justify-end -translate-x-8 -mt-12 gap-4'>
             <Link to="/"><button className='bg-red-400 hover:bg-green-400 text-2xl w-24 h-12 rounded-xl font-semibold'>Home</button></Link>
-            <button className='bg-red-400 hover:bg-green-400 text-2xl w-24 h-12 rounded-xl font-semibold'>Signin</button>
+            <Link to='/signup'><button className='bg-red-400 hover:bg-green-400 text-2xl w-24 h-12 rounded-xl font-semibold'>Signup</button></Link>
         </div>
     </nav>
   )

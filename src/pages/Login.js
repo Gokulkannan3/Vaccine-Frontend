@@ -20,7 +20,7 @@ export default function Login() {
         e.preventDefault();
         console.log({ usermail, password });
         try {
-            const response = await axios.post('http://localhost:8080/login', {
+            const response = await axios.post('https://vaccine-server-tj0x.onrender.com/login', {
                 usermail: usermail,
                 password: password,
             });
@@ -41,7 +41,7 @@ export default function Login() {
     
 
     const userauth = () => {
-        axios.get("http://localhost:8080/isAuth", {
+        axios.get("https://vaccine-server-tj0x.onrender.com/isAuth", {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             }

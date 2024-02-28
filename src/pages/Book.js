@@ -12,7 +12,7 @@ export default function Book() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/fetchData');
+        const response = await axios.get('https://vaccine-server-tj0x.onrender.com/fetchData');
         const data = response.data.data;
         const uniqueCities = [...new Set(data.map((item) => item.city))];
 
@@ -32,7 +32,7 @@ export default function Book() {
 
   const fetchDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/fetchData', {
+      const response = await axios.get('https://vaccine-server-tj0x.onrender.com/fetchData', {
         params: {
           city: selectedCity,
           date: selectedDate,
@@ -89,16 +89,21 @@ export default function Book() {
         </div>
       </div>
       <div className='flex justify-center'>
-        <div className="card w-1/2 mt-10 h-96 bg-blue-200 flex justify-center items-center shadow-3xl">
+        <div className="card w-1/2 mt-10 h-auto mb-32 bg-blue-200 flex justify-center items-center shadow-3xl">
           {displayedData.length === 0 ? (
-            <p>No slots available for the selected date and city.</p>
+            <p className='text-xl font-bold'>No slots available</p>
           ) : (
             displayedData.map((item) => (
               <div key={item.id} className='text-xl'>
-                <p className='text-red-500 font-extrabold mb-5'>Hospital Name: {item.hname}</p>
+                <p className='text-red-500 font-extrabold flex justify-center mt-3 mb-3'>Hospital Name: {item.hname}</p>
                 <div className='flex justify-center'>
                     <button className='btn btn-accent mb-5'>
                       Hospital Contact Number : {item.contact}
+                    </button>
+                </div>
+                <div className='flex justify-center'>
+                    <button className='btn btn-accent mb-5'>
+                        Doseages count: {item.count}
                     </button>
                 </div>
                 <div className='flex justify-center'>
@@ -117,7 +122,7 @@ export default function Book() {
                     </button>
                 </div>
                 <Link to={`/booking?city=${selectedCity}`}>
-                  <div className='flex justify-center'>
+                  <div className='flex justify-center -translate-y-2'>
                     <button className='btn btn-outline btn-ascent'>Book Now</button>
                   </div>
                 </Link>

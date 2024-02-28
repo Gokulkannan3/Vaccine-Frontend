@@ -10,7 +10,7 @@ export default function Admin() {
   const [isModalOpen,setIsModalOpen] = useState(null);
 
   const deleteHospital = (id) => {
-    axios.delete(`http://localhost:8080/delete/${id}`).then((response) => {
+    axios.delete(`https://vaccine-server-tj0x.onrender.com/delete/${id}`).then((response) => {
       if (response.status === 200) {
         setTableData(
           tableData.filter((val) => {
@@ -35,7 +35,7 @@ export default function Admin() {
 
   const handleModalSave = () => {
     if (editingHospital) {
-      axios.put(`http://localhost:8080/updateData/${editingHospital.id}`, editingHospital)
+      axios.put(`https://vaccine-server-tj0x.onrender.com/updateData/${editingHospital.id}`, editingHospital)
         .then((response) => {
           console.log('Hospital edited:', response.data);
           closeModal();
@@ -59,7 +59,7 @@ export default function Admin() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/fetchData');
+            const response = await axios.get('https://vaccine-server-tj0x.onrender.com/fetchData');
             setTableData(response.data.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -89,6 +89,7 @@ export default function Admin() {
                 <th>ID</th>
                 <th>City</th>
                 <th>Hospital Name</th>
+                <th>Date</th>
                 <th>Doseage Stock</th>
                 <th>Slot 1 Count</th>
                 <th>Slot 2 Count</th>
@@ -102,6 +103,7 @@ export default function Admin() {
                     <td>{row.id}</td>
                     <td>{row.city}</td>
                     <td>{row.hname}</td>
+                    <td>{row.ddate}</td>
                     <td>{row.count}</td>
                     <td>{row.slotone}</td>
                     <td>{row.slottwo}</td>

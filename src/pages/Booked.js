@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Hnav';
-import axios from 'axios';
+import Axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import Modal from 'react-modal';
 import Lottie from 'lottie-react';
@@ -32,8 +32,8 @@ const BookingForm = () => {
       setUserLastname(JSON.parse(storedUserData).lastname);
       setCity(selectedCity);
     } else {
-      axios
-        .get('http://localhost:8080/isAuth', {
+      Axios
+        .get('https://vaccine-server-tj0x.onrender.com/isAuth', {
           headers: {
             'x-access-token': localStorage.getItem('token'),
           },
@@ -56,8 +56,17 @@ const BookingForm = () => {
     }
   }, []);
 
-  const bookSlot = () => {
-    axios.post('http://localhost:8080/book', {
+  const bookSlot = (e) => {
+    e.preventDefault(); 
+    if (!aadhar||!slot||!count) {
+      alert("Please fill in all details");
+      return;
+    }
+    if (aadhar.length !== 13 && aadhar.length>13) {
+      alert("Aadhar number must be of 12 digits");
+      return false;
+    } 
+    Axios.post(`https://vaccine-server-tj0x.onrender.com/book`, {
       usermail,
       slot,
       aadhar,
@@ -71,7 +80,6 @@ const BookingForm = () => {
       },
     })
       .then((response) => {
-        alert(response.data.message);
         setModalIsOpen(true);
       })
       .catch((error) => {

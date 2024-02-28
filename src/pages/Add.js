@@ -25,8 +25,14 @@ export default function Add() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
   
     const add = (e) => {
-      e.preventDefault(); 
-      Axios.post(`http://localhost:8080/add`, {
+      e.preventDefault();
+      const currentDate = new Date();
+      const selectedDate = new Date(ddate);
+      if (selectedDate <= currentDate) {
+        alert('Date cannot be in the present or past');
+        return;
+      }
+      Axios.post(`https://vaccine-server-tj0x.onrender.com/add`, {
         city: city,
         hname: hname,
         contact: contact,
@@ -45,11 +51,11 @@ export default function Add() {
       })
         .then(() => {
           console.log("Success");
+          setModalIsOpen(true);
         })
         .catch(() => {
           console.error();
         });
-        setModalIsOpen(true);
     };
   
     const closeModal = () => {

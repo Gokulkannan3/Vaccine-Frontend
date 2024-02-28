@@ -30,7 +30,15 @@ export default function Signup() {
       setPasswordMatch(false);
       return;
     }
-    Axios.post(`http://localhost:8080/register`, {
+    if (!firstname || !lastname || !contact || !email || !dob || !address || !mem || !usermail || !password || !cpassword) {
+      alert("Please fill in all details");
+      return;
+    }
+    if (age<18) {
+      alert("Age must be greater than 18");
+      return;
+    }
+    Axios.post(`https://vaccine-server-tj0x.onrender.com/register`, {
       firstname: firstname,
       lastname: lastname,
       contact: contact,
@@ -45,11 +53,11 @@ export default function Signup() {
     })
       .then(() => {
         console.log("Success");
+        setModalIsOpen(true);
       })
       .catch(() => {
         console.error();
       });
-      setModalIsOpen(true);
   };
 
   const closeModal = () => {
