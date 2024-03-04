@@ -19,7 +19,7 @@ export default function Anav() {
 
             if (token && usermail) {
                 axios
-                    .get('http://localhost:8080/isAauth', {
+                    .get('https://vaccine-server-tj0x.onrender.com/isAauth', {
                         headers: {
                             'x-access-token': token,
                         },
