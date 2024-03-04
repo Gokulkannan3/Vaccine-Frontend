@@ -41,7 +41,7 @@ export default function Alogin() {
 
   const userauth = () => {
     axios
-      .get('http://localhost:8080/isAauth', {
+      .get('https://vaccine-server-tj0x.onrender.com/isAauth', {
         headers: {
           'x-access-token': localStorage.getItem('token'),
         },
