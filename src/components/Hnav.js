@@ -14,7 +14,7 @@ export default function Hnav() {
     if (storedUserData) {
       setUserData(JSON.parse(storedUserData));
     } else {
-      axios.get("http://localhost:8080/isAuth", {
+      axios.get("https://vaccine-server-tj0x.onrender.com/isAuth", {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         }
