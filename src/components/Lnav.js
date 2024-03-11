@@ -9,7 +9,7 @@ export default function Lnav() {
         <div className='flex justify-start'>
             <img alt='logo' src={Logo} className='w-20 rounded-full ml-8 mt-5'/>
         </div>
-        <div className='flex justify-center -mt-20 font-bold text-2xl'>
+        <div className='flex justify-center -mt-10 font-bold text-2xl'>
             <p>Quick Vax</p>
         </div>
         <div className='flex justify-end -translate-x-8 -mt-12 gap-4'>
