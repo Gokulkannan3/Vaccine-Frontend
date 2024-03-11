@@ -57,10 +57,7 @@ export default function Anav() {
                 <img alt='logo' src={Logo} className='w-20 rounded-full ml-8 mt-5' />
             </div>
             <div className='flex justify-center -mt-20 font-bold text-2xl'>
-                <p>Government of TamilNadu</p>
-            </div>
-            <div className='flex justify-center -mt-1 font-bold text-2xl'>
-                <p>Vaccination Booking</p>
+                <p>Quick Vax</p>
             </div>
             <div className='flex justify-end -translate-x-8 -mt-12 gap-4'>
                 {userData ? (
