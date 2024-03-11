@@ -56,7 +56,7 @@ export default function Anav() {
             <div className='flex justify-start'>
                 <img alt='logo' src={Logo} className='w-20 rounded-full ml-8 mt-5' />
             </div>
-            <div className='flex justify-center -mt-5 font-bold text-4xl'>
+            <div className='flex justify-center mt-5 font-bold text-4xl'>
                 <p>Quick Vax</p>
             </div>
             <div className='flex justify-end -translate-x-8 -mt-12 gap-4'>
