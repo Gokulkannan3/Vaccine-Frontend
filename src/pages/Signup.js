@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Lnav'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'react-modal';
 import Lottie from 'lottie-react';
@@ -23,6 +24,8 @@ export default function Signup() {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [usermail,setUserMail]=useState('');
+  const [yes,setYes]=useState('');
+  const navigate = useNavigate();
 
   const addUser = (e) => {
     e.preventDefault(); 
@@ -30,13 +33,16 @@ export default function Signup() {
       setPasswordMatch(false);
       return;
     }
-    if (!firstname || !lastname || !contact || !email || !dob || !address || !mem || !usermail || !password || !cpassword) {
+    if (!firstname || !lastname || !contact || !email || !dob || !address || !mem || !usermail || !password || !cpassword || !yes) {
       alert("Please fill in all details");
       return;
     }
     if (age<18) {
       alert("Age must be greater than 18");
       return;
+    }
+    if(yes==='yes'){
+      navigate('/babydetails')
     }
     Axios.post(`https://vaccine-server-tj0x.onrender.com/register`, {
       firstname: firstname,
@@ -50,6 +56,7 @@ export default function Signup() {
       usermail: usermail,
       password:password,
       cpassword:cpassword,
+      yes:yes,
     })
       .then(() => {
         console.log("Success");
@@ -180,9 +187,19 @@ export default function Signup() {
             {!passwordMatch && (
                 <p className="text-red-500 text-sm mt-2">Password and Confirm Password do not match</p>
                 )}
+            <div class="sm:col-span-4">
+            <label>Is ther any new born baby in family</label>
+            <select className='ring-1 ring-inset ring-red-500 collapse collapse-arrow  input-error font-normal mb-5' onChange={(e) => setYes(e.target.value)} required>
+              <option>Select</option>
+              <option>yes</option>
+              <option>no</option>
+            </select>
+            </div>
+
             <div className='flex justify-center mt-5'>
             <button className='btn bg-red-500 font-bold text-xl text-white hover:bg-red-400 hover:text-black' type='submit' onClick={addUser}>Submit</button>
             </div>
+            
             
             </form>
             <div className='flex justify-center items-center'>
