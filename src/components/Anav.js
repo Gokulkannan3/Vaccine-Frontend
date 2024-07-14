@@ -19,7 +19,7 @@ export default function Anav() {
 
             if (token && usermail) {
                 axios
-                    .get('http://localhost:8080/isAauth', {
+                    .get('https://vaccine-server-tj0x.onrender.com/isAauth', {
                         headers: {
                             'x-access-token': token,
                         },
@@ -56,11 +56,8 @@ export default function Anav() {
             <div className='flex justify-start'>
                 <img alt='logo' src={Logo} className='w-20 rounded-full ml-8 mt-5' />
             </div>
-            <div className='flex justify-center -mt-20 font-bold text-2xl'>
-                <p>Government of TamilNadu</p>
-            </div>
-            <div className='flex justify-center -mt-1 font-bold text-2xl'>
-                <p>Vaccination Booking</p>
+            <div className='flex justify-center -mt-14 font-bold text-4xl'>
+                <p>Quick Vax</p>
             </div>
             <div className='flex justify-end -translate-x-8 -mt-12 gap-4'>
                 {userData ? (
