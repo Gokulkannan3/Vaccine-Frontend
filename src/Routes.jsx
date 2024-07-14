@@ -11,6 +11,7 @@ import Lhome from "./pages/Lhome";
 import Add from "./pages/Add";
 import Book from "./pages/Book";
 import Booked from "./pages/Booked";
+import Baby from "./pages/Baby";
 
 const AllRoutes= ()=>{
     return(
@@ -26,6 +27,7 @@ const AllRoutes= ()=>{
             <Route exact path ='/add' element={<Add/>}/>
             <Route exact path ='/book' element={<Book/>}/>
             <Route exact path ='/booking' element={<Booked/>}/>
+            <Route exact path ='/babydetails' element={<Baby/>}/>
         </Routes>
         
     )   
